@@ -10,7 +10,46 @@
 <body>
 <!--需求-->
 	<div id="app" class="container">
-		{{msg}}
+		<div class="page-heder h2">购物车实例</div>
+		<div class="row" style="margin-bottom: 20px;">
+			<div class="col-md-6 col-md-offset-3">
+				<input type="text" class="form-control" placeholder="搜索" />
+			</div>
+		</div>
+		
+
+		<table class="table table-bordered table-hover table-striped">
+			<tr>
+				<td>书名</td>
+				<td>单价</td>
+				<td>数量</td>
+				<td>总价</td>
+				<td>操作</td>
+			</tr>
+			<tr v-for="book in books">
+				<td>{{book.bookname}}</td>
+				<td>{{book.price}}</td>
+				<!--数量-->
+				<td>
+					<div class="input-group">
+						<div class="input-group-btn">
+							<buton class="btn btn-default" @click="book.count == 0 ? 0 : book.count--">-</buton>
+						</div>
+						<input type="text" v-model="book.count" class="form-control" />
+						<div class="input-group-btn">
+							<buton class="btn btn-default" @click="book.count++">+</buton>
+						</div>
+					</div>
+				</td>
+				<!-- -->
+				<td>{{book.price*book.count}}</td>
+				<td><button class="btn btn-danger">删除</button></td>
+				
+			</tr>
+			<tr colspan="5" >总价<span>{{total | unit}}</span></tr>
+		</table>
+
+		
 	</div>
 	
 </body>
@@ -18,8 +57,36 @@
 	let vm = new Vue({
 		el:"#app",
 		data:{
-			msg:"11111"
-		}
+			books:[
+				{bookname:"php",price:10,count:1},
+				{bookname:"linex",price:10,count:100},
+				{bookname:"go",price:10,count:1},
+				{bookname:"python",price:10,count:1},
+				{bookname:"thinkphp",price:10,count:10},
+				{bookname:"spring",price:10,count:1},
+				{bookname:"ios",price:10,count:1},
+				{bookname:"nodejs",price:10,count:1},
+				{bookname:"vue",price:10,count:1},
+				{bookname:"react",price:10,count:10},
+			]
+		},
+		computed:{
+			total(){
+				sum= 0;
+				this.books.forEach(item=>{
+					
+					sum+=item.price*item.count
+					
+				})
+				return sum;
+			}
+		},
+		filters:{
+			unit(val){
+				return  val+'元'
+
+			}
+		},
 	})
 </script>
 </html>
