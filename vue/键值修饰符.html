@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>键值修饰符</title>
+	<link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+	<scrip src="../node_modules/jquery/dist/jquery.min.js"></scrip>
+	<script src="../vue.js"></script>
+</head>
+<body>
+	<div id="app" class="container">
+		<textarea class="form-control" v-on:keyup.enter="one"></textarea>
+		<!--v-on:可以简写成@-->
+	</div>	
+</body>
+<script>
+	let app  = new Vue({
+		el:"#app",
+		data:{
+			msg:"hefdff",
+		
+		},
+		methods:{
+			one(){
+				alert(121111)
+			}
+		}
+	})
+	
+</script>
+</html>

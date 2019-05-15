@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../vue.min.js"></script>
+</head>
+<body>
+
+
+<!--view层-->
+<div id="app">
+
+    <!--一个正常的输出-->
+    {{msg}}
+    <hr>
+    <!--在大括号里面进行运算-->
+    {{1+11}}
+    <hr>
+    <!--也可以对于原来的值进行重新的赋值-->
+    {{msg1 ="bbbb"}}
+
+    <hr>
+    <!--也可以对于数据进行格式化-->
+   {{msg.toUpperCase()}}
+
+    <hr>
+    {{num >5 ? "yes" :"no"}}
+
+
+
+</div>
+
+
+<script>
+
+    //viewModel
+    let vm = new Vue({
+        el :"#app",
+        data:{
+            msg:"hello",
+            num:10
+        }
+    });
+</script>
+
+
+</body>
+</html>

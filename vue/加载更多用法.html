@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>加载更多用法</title>
+	<link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+	<scrip src="../node_modules/jquery/dist/jquery.min.js"></scrip>
+	<script src="../vue.js"></script>
+</head>
+<body>
+<!--需求-->
+	<div id="app" class="container">
+		<div class="page-header">计  算性实例</div>
+		<table class="table table-bordered">
+			<tr>
+				<td>书名</td>
+				<td>单价</td>
+				<td>数量</td>
+			</tr>
+			<tr v-for="book in newarr">
+				<td>{{book.bookname}}</td>
+				<td>{{book.price}}</td>
+				<td>{{book.count}}</td>
+			</tr>
+
+		</table>
+		<button class="btn btn-primary btn-lg" v-if="end<books.length" @click="end+=5">加载更多</button>
+	</div>
+	
+</body>
+<script>
+	var app = new Vue({
+		el:"#app",
+		data:{
+			msg:"1111",
+			num :100,
+			search:'',
+			books:[
+				{bookname:"ptyhon",price:10,count:1},
+				{bookname:"go",price:100,count:12},
+				{bookname:"vuex",price:1000,count:13},
+				{bookname:"php",price:100000,count:14},
+				{bookname:"ios",price:200,count:15},
+				{bookname:"ruby",price:230,count:16},
+				{bookname:"js",price:100,count:160},
+				{bookname:"js",price:100,count:160},
+				{bookname:"js",price:100,count:160},
+				{bookname:"js",price:100,count:160},
+				{bookname:"js",price:100,count:160},
+				{bookname:"js",price:100,count:160},
+				{bookname:"js",price:100,count:160},
+				{bookname:"js",price:100,count:160},
+				{bookname:"js",price:100,count:160},
+				{bookname:"js",price:100,count:160},
+				{bookname:"js",price:100,count:160},
+				{bookname:"js",price:100,count:160},
+				{bookname:"js",price:100,count:160}
+			],
+			end:2
+		},
+		methods:{
+			one(){
+			console.log('aaa')}
+		},
+		<!--过滤器    字符串 整数转换等可以使用过滤器  | 管道符-->
+		filters:{
+			one(val){
+				return val+'元'
+			}
+		},
+		computed:{
+			newarr(){
+				return this.books.slice(0,this.end);
+			}
+		}
+		
+	})  
+	
+</script>
+</html>
